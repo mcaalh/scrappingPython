@@ -1,0 +1,17 @@
+import urllib
+import json
+
+
+address = raw_input("enter address: ")
+if len(address) < 1 : address = "http://python-data.dr-chuck.net/comments_197938.json"
+
+lst = list()
+uh = urllib.urlopen(address)
+data  = uh.read()
+
+js = json.loads(data)
+
+for dt in js["comments"]:
+	elem = dt['count']
+	lst.append(elem)
+print sum(lst)
